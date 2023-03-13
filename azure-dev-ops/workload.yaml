@@ -1,0 +1,10 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  labels:
+    app.kubernetes.io/part-of: hello-world
+    apps.tanzu.vmware.com/workload-type: web
+  name: hello-world
+spec:
+  source:
+    git: {} # Will be set by ADO Pipeline
