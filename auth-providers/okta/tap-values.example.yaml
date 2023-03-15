@@ -1,0 +1,14 @@
+tap_gui:
+    app_config:
+        auth:
+          allowGuestAccess: false
+          environment: development
+          providers:
+            okta:
+              development:
+                clientId: O2urSBm...
+                clientSecret: r-umbRf...
+                audience: https://company.okta.com
+                authServerId: default # Optional
+                idp: 0oaulob4BFVa4zQvt0g3 # Optional
+              

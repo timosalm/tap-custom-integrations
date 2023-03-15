@@ -1,0 +1,13 @@
+tap_gui:
+    app_config:
+        auth:
+          allowGuestAccess: false
+          environment: development
+          providers:
+            auth0:
+              development:
+                clientId: O2urSBm...
+                clientSecret: r-umbRf...
+                domain: dev-1yr7as897wjuj7ae.us.auth0.com
+          session:
+            secret: auth0-session
