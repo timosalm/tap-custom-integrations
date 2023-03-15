@@ -9,3 +9,4 @@ For applications running on TAP, we've a component called [Application Single Si
 
 Sample integrations:
 - [Auth0 by Okta](auth0)
+- [Okta](okta)
