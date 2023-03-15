@@ -1,4 +1,4 @@
 # Custom Integrations for VMware Tanzu Application Platform
 
 - [Azure DevOps](azure-dev-ops)
-- [Authentication Provider](auth-providers)
+- [Authentication Providers](auth-providers)
