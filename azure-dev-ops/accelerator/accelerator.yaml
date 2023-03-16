@@ -34,5 +34,5 @@ engine:
       - type: OpenRewriteRecipe
         recipe: org.openrewrite.yaml.ChangeValue
         options:
-          oldKeyPath: $.spec.git
+          oldKeyPath: '"$.spec.source.git"'
           value: {}
