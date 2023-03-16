@@ -6,6 +6,12 @@ The [Azure DevOps Pipeline](azure-pipelines.yaml) should be copied to the root o
 To set up a Kubernetes Service Endpoint in your Azure DevOps project, navigate to `Pipelines/Environments`, click on `New environment`, select the `Kubernetes` Resource, and follow the instructions.
 
 To make your developers as productive as possible, I recommend creating an [TAP Accelerator](https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.4/tap/application-accelerator-about-application-accelerator.html) that already includes the [Workload configuration](workload.yaml) and [Azure DevOps Pipeline](azure-pipelines.yaml).
+For a sample, have a look at [this](accelerator-k8s.yaml) Kubernetes resource and the implementation [here](accelerator).
+You can apply to a TAP environment from this repository folder via the following commands:
+```
+tanzu accelerator apply -f accelerator-k8s.yaml // or
+kubectl apply -f accelerator-k8s.yaml
+```
 
 Azure DevOps requires you to use libgit2 as the server-side implementation as it only supports GIT's v2 protocol. Therefore you've to configure the ClusterSupplyChain for it.
 ```

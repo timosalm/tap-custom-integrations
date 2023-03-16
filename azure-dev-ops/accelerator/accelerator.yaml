@@ -1,0 +1,37 @@
+accelerator:
+  displayName: Spring Microservice for Azure DevOps
+  description: Provides a starting point to implement a 15 factors microservice.
+  iconUrl: https://devblogs.microsoft.com/devops/wp-content/uploads/sites/6/2018/08/vstsfeature.png
+  tags:
+    - java
+    - spring
+    - microservice
+  options:
+    - name: k8sEndpoint
+      label: Kubernetes Service Connection Endpoint (see https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints)
+      inputType: text
+      required: true
+  imports:
+    - name: new-service-fragment
+engine:
+  merge:
+    - include: ["**/*"]
+    - type: InvokeFragment
+      reference: new-service-fragment
+    - include: [ "azure-pipelines.yaml" ]
+      chain:
+        - type: ReplaceText
+          substitutions:
+          - text: "JAVA_VERSION"
+            with: "#javaVersion"
+          - text: NAMESPACE
+            with: "#namespace"
+          - text: YOUR_KUBERNETES_SERVICE_ENDPOINT
+            with: "#k8sEndpoint"
+    - include: [ "config/workload.yaml" ]
+      chain:
+      - type: ReplaceText
+        regex:
+          pattern: "(git:)((.|\n)*)(main)"
+          with: "#g1 + ' {}'"
+          

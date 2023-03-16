@@ -1,0 +1,11 @@
+apiVersion: accelerator.apps.tanzu.vmware.com/v1alpha1
+kind: Accelerator
+metadata:
+  name: new-service-ado
+  namespace: accelerator-system
+spec:
+  git:
+    ref:
+      branch: main
+    url: https://github.com/tsalm-pivotal/tap-custom-integrations.git
+    subPath: azure-dev-ops/accelerator
