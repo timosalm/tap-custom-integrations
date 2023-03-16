@@ -8,9 +8,10 @@ accelerator:
     - microservice
   options:
     - name: k8sEndpoint
-      label: Kubernetes Service Connection Endpoint (see https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints)
+      label: Kubernetes Service Connection endpoint
       inputType: text
       required: true
+      description: For more information on how to configure it in Azure DevOps, see https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints
   imports:
     - name: new-service-fragment
 engine:
@@ -23,7 +24,7 @@ engine:
         - type: ReplaceText
           substitutions:
           - text: "JAVA_VERSION"
-            with: "#javaVersion"
+            with: "#javaVersion.toString()"
           - text: NAMESPACE
             with: "#namespace"
           - text: YOUR_KUBERNETES_SERVICE_ENDPOINT
