@@ -16,8 +16,16 @@ accelerator:
     - name: new-service-fragment
 engine:
   merge:
-    - type: InvokeFragment
-      reference: new-service-fragment
+    - chain:
+      - type: InvokeFragment
+        reference: new-service-fragment
+      - include: [ "config/workload.yaml" ]
+        chain:
+        - type: OpenRewriteRecipe
+          recipe: org.openrewrite.yaml.ChangeValue
+          options:
+            oldKeyPath: "'$.spec.source.git'"
+            value: "' {}'"
     - include: [ "azure-pipelines.yml" ]
       chain:
         - type: ReplaceText
@@ -28,10 +36,3 @@ engine:
             with: "#namespace"
           - text: YOUR_KUBERNETES_SERVICE_ENDPOINT
             with: "#k8sEndpoint"
-    - include: [ "config/workload.yaml" ]
-      chain:
-      - type: OpenRewriteRecipe
-        recipe: org.openrewrite.yaml.ChangeValue
-        options:
-          oldKeyPath: "'$.spec.source.git'"
-          value: "'{}'"
