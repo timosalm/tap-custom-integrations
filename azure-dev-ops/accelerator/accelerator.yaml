@@ -31,8 +31,8 @@ engine:
             with: "#k8sEndpoint"
     - include: [ "config/workload.yaml" ]
       chain:
-      - type: ReplaceText
-        regex:
-          pattern: "(git:)((.|\\n|\\t|\\r)*)(main)"
-          with: "#g1 + ' {}'"
-          
+      - type: OpenRewriteRecipe
+        recipe: org.openrewrite.yaml.ChangeValue
+        options:
+          oldKeyPath: $.spec.git
+          value: {}
