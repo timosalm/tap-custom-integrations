@@ -25,3 +25,10 @@ spec:
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
         kind: ResourceClaim
         name: auth-client
+    # A shared session storage is required for OAuth2 clients if multiple instances of the app are run behind a load balancer
+    - name: shared-session-storage
+      ref:
+        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+        kind: ResourceClaim
+        name: redis-1
+    
