@@ -16,7 +16,6 @@ accelerator:
     - name: new-service-fragment
 engine:
   merge:
-    - include: ["**/*"]
     - type: InvokeFragment
       reference: new-service-fragment
     - include: [ "azure-pipelines.yml" ]
@@ -34,5 +33,5 @@ engine:
       - type: OpenRewriteRecipe
         recipe: org.openrewrite.yaml.ChangeValue
         options:
-          oldKeyPath: '"$.spec.source.git"'
-          value: {}
+          oldKeyPath: "'$.spec.source.git'"
+          value: "'{}'"
