@@ -19,13 +19,15 @@ engine:
     - chain:
       - type: InvokeFragment
         reference: new-service-fragment
-      - include: [ "config/workload.yaml" ]
-        chain:
-        - type: OpenRewriteRecipe
-          recipe: org.openrewrite.yaml.ChangeValue
-          options:
-            oldKeyPath: "'$.spec.source.git'"
-            value: "' {}'"
+      - merge:
+        - include: ["**"]
+        - include: [ "config/workload.yaml" ]
+          chain:
+          - type: OpenRewriteRecipe
+            recipe: org.openrewrite.yaml.ChangeValue
+            options:
+              oldKeyPath: "'$.spec.source.git'"
+              value: "' {}'"
     - include: [ "azure-pipelines.yml" ]
       chain:
         - type: ReplaceText
