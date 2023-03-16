@@ -12,7 +12,8 @@ You can apply to a TAP environment from this repository folder via the following
 tanzu accelerator apply -f accelerator-k8s.yaml // or
 kubectl apply -f accelerator-k8s.yaml
 ```
-To demonstrate the accelerator, [create a new Git repository in ADO](https://learn.microsoft.com/en-us/azure/devops/repos/git/create-new-repo?view=azure-devops), [configure a Kubernetes Service Connection endpoint](https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints) for your TAP environment in ADO, download and unpack the generated ZIP file from the accelerator and push it to the created repository. As soon as the auto-creation of GIT repositories capability of App Accelerators also works with ADO, the experience will be a lot better.
+To demonstrate the accelerator, [create a new Git repository in ADO](https://learn.microsoft.com/en-us/azure/devops/repos/git/create-new-repo?view=azure-devops), [configure a Kubernetes Service Connection endpoint](https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints) for your TAP environment, download and unpack the generated ZIP file from the accelerator and push it to the created repository. As soon as the auto-creation of GIT repositories capability of App Accelerators also works with ADO, the experience will be a lot better.
+In ADO, navigate to Pipelines, New Pipelines, Azure Repos Git, select your repository, the contents of the by the accelerator auto-generated azure-pipelines.yml should be shown, click on run. Now you've a continous path to production with ADO and TAP.
 
 Azure DevOps requires you to use libgit2 as the server-side implementation as it only supports GIT's v2 protocol. Therefore you've to configure the ClusterSupplyChain for it.
 ```

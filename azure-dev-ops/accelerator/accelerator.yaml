@@ -19,7 +19,7 @@ engine:
     - include: ["**/*"]
     - type: InvokeFragment
       reference: new-service-fragment
-    - include: [ "azure-pipelines.yaml" ]
+    - include: [ "azure-pipelines.yml" ]
       chain:
         - type: ReplaceText
           substitutions:
@@ -33,6 +33,6 @@ engine:
       chain:
       - type: ReplaceText
         regex:
-          pattern: "(git:)((.|\n)*)(main)"
+          pattern: "(git:)((.|\\n|\\t)*)(main)"
           with: "#g1 + ' {}'"
           
